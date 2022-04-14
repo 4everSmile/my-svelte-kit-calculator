@@ -6,19 +6,21 @@ const useMstSnapshot = (store) => ({
 		method(store);
 
 		return onSnapshot(store, () => {
-			method(store);
+			method(store)
 		});
 	}
 });
 
-const CalculatorStore = types.model({ value: '' }).actions((state) => {
-	return {
-		setValue: (newValue) => {
-			state.value = newValue;
-		}
-	};
-});
+const CalculatorStore = types
+	.model({ value: '' })
+	.actions((state) => {
+		return {
+			setValue: (newValue) => {
+				state.value = newValue;
+			}
+		};
+	});
 
-const calculatorStore = useMstSnapshot(CalculatorStore.create());
+const calculatorStore = useMstSnapshot(CalculatorStore.create()); 
 
 export default calculatorStore;
